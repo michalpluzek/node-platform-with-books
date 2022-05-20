@@ -79,7 +79,7 @@ Endpoint: '/books'
 
   responses:
     - status: 404, message: 'Nie znaleziono książki o podanym id'
-    - status: 200
+    - status: 200 data: books(object[])
     - status: 500, message: 'Wystpił błąd podczas wykonywania metody DELETE w endpoincie /books/:id'
 
 5. Metoda GET (pobranie pojedyńczego kursu)

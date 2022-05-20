@@ -17,7 +17,7 @@ exports.getBooks = (request, response) => {
       books,
     });
   } catch (error) {
-    response.status(500).json({
+    return response.status(500).json({
       error,
       message:
         'Wystpił błąd podczas wykonywania metody GET w endpoincie /books',
@@ -59,7 +59,7 @@ exports.putBook = (request, response) => {
       message: 'Książka zaktualizowana',
     });
   } catch (error) {
-    response.status(500).json({
+    return response.status(500).json({
       error,
       message:
         'Wystpił błąd podczas wykonywania metody PUT w endpoincie /books',
@@ -96,10 +96,37 @@ exports.postBook = (request, response) => {
       message: 'Książka dodana',
     });
   } catch (error) {
-    response.status(500).json({
+    return response.status(500).json({
       error,
       message:
         'Wystpił błąd podczas wykonywania metody POST w endpoincie /books',
+    });
+  }
+};
+
+exports.deleteBook = (request, response) => {
+  try {
+    const { id } = request.params;
+    const books = getAllBooksFromDatabase();
+
+    const indexBookToDelete = books.findIndex((book) => book.id === id);
+    if (indexBookToDelete === -1) {
+      return response.status(404).json({
+        message: 'Nie znaleziono książki o podanym id',
+      });
+    }
+
+    books.splice(indexBookToDelete, 1);
+
+    return response.status(200).json({
+      books,
+      message: 'Książka usunięta',
+    });
+  } catch (error) {
+    return response.status(500).json({
+      error,
+      message:
+        'Wystpił błąd podczas wykonywania metody DELETE w endpoincie /books/:id',
     });
   }
 };
