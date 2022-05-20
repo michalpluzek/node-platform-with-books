@@ -82,7 +82,7 @@ Endpoint: '/books'
     - status: 200 data: books(object[])
     - status: 500, message: 'Wystpił błąd podczas wykonywania metody DELETE w endpoincie /books/:id'
 
-5. Metoda GET (pobranie pojedyńczego kursu)
+5. Metoda GET (pobranie pojedyńczej książki)
   params: '/books/:id'
 
   responses:
