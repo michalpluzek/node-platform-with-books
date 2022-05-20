@@ -70,7 +70,7 @@ Endpoint: '/books'
 
   responses:
     - status: 400, message: 'Nie podano wszystkich wymaganych informacji'
-    - status: 409, message: 'Książka o tym tytule już istnieje: ${title}'
+    - status: 409, message: 'Książka o tym tytule już istnieje'
     - status: 201, data: books(object[])
     - status: 500, message: 'Wystpił błąd podczas wykonywania metody POST w endpoincie /books'
 

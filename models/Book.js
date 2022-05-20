@@ -19,7 +19,7 @@ exports.booksData = [
 
 exports.Book = class {
   constructor(authors, img, price, title) {
-    this.authors = [...authors];
+    this.authors = authors;
     this.id = uuid();
     this.img = img;
     this.price = price;
