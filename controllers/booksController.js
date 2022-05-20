@@ -2,6 +2,7 @@ const {
   getAllBooksFromDatabase,
 } = require('../services/getAllBooksFromDatabase');
 const { Book } = require('../models/Book');
+const { getBookFromDatabase } = require('../services/getBookFromDatabase');
 
 exports.getBooks = (request, response) => {
   try {
@@ -127,6 +128,29 @@ exports.deleteBook = (request, response) => {
       error,
       message:
         'Wystpił błąd podczas wykonywania metody DELETE w endpoincie /books/:id',
+    });
+  }
+};
+
+exports.getBook = (request, response) => {
+  try {
+    const { id } = request.params;
+    const book = getBookFromDatabase(id);
+
+    if (!book) {
+      return response.status(404).json({
+        message: 'Nie znaleziono książki o podanym id',
+      });
+    }
+
+    return response.status(200).json({
+      book,
+    });
+  } catch (error) {
+    return response.status(500).json({
+      error,
+      message:
+        'Wystpił błąd podczas wykonywania metody GET w endpoincie /books/:id',
     });
   }
 };

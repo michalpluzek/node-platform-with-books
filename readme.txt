@@ -86,5 +86,6 @@ Endpoint: '/books'
   params: '/books/:id'
 
   responses:
+    - status: 404, message: 'Nie znaleziono książki o podanym id'
     - status: 200, data: books(object)
     - status: 500, message: 'Wystpił błąd podczas wykonywania metody GET w endpoincie /books/:id'
