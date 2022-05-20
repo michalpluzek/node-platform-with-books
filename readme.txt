@@ -25,8 +25,8 @@ Użytkownicy:
 
 2. Metoda PATCH (zakup książki):
   body: {
-    login: string,
     bookId: string,
+    login: string,
   }
 
   responses:

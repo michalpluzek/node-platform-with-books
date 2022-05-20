@@ -3,18 +3,18 @@ const { accessLevels } = require('../consts/accessLevels');
 
 exports.usersData = [
   {
+    accessLevel: accessLevels.USER,
+    books: [booksData[0].id],
+    budget: 150,
     login: 'user1',
     password: '1234',
-    accessLevel: accessLevels.USER,
-    budget: 150,
-    books: [booksData[0].id],
   },
   {
+    accessLevel: accessLevels.ADMIN,
+    books: [booksData.map((book) => book.id)],
+    budget: 100000,
     login: 'admin',
     password: '0000',
-    accessLevel: accessLevels.ADMIN,
-    budget: 100000,
-    books: [booksData.map((book) => book.id)],
   },
 ];
 
